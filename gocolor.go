@@ -1,6 +1,9 @@
 package gocolor
 
-import "image/color"
+import (
+	"fmt"
+	"image/color"
+)
 
 type Color int
 
@@ -59,48 +62,47 @@ func Of(c Color, alpha uint8) color.RGBA {
 		return color.RGBA{255, 255, 255, alpha}
 	}
 
-	// ERROR
+	// Unexpected
 	return color.RGBA{255, 255, 255, alpha}
 }
 
-func ValueOf(c string, alpha uint8) color.RGBA {
+func ValueOf(c string, alpha uint8) (color.RGBA, error) {
 
 	switch c {
 	case "Black":
-		return Of(Black, alpha)
+		return Of(Black, alpha), nil
 	case "Navy":
-		return Of(Black, alpha)
+		return Of(Navy, alpha), nil
 	case "Blue":
-		return Of(Black, alpha)
+		return Of(Black, alpha), nil
 	case "Green":
-		return Of(Black, alpha)
+		return Of(Green, alpha), nil
 	case "Teal":
-		return Of(Black, alpha)
+		return Of(Teal, alpha), nil
 	case "Lime":
-		return Of(Black, alpha)
+		return Of(Lime, alpha), nil
 	case "Aqua":
-		return Of(Black, alpha)
+		return Of(Aqua, alpha), nil
 	case "Maroon":
-		return Of(Black, alpha)
+		return Of(Maroon, alpha), nil
 	case "Purple":
-		return Of(Black, alpha)
+		return Of(Purple, alpha), nil
 	case "Olive":
-		return Of(Black, alpha)
+		return Of(Olive, alpha), nil
 	case "Gray":
-		return Of(Black, alpha)
+		return Of(Gray, alpha), nil
 	case "Silver":
-		return Of(Black, alpha)
+		return Of(Silver, alpha), nil
 	case "Red":
-		return Of(Black, alpha)
+		return Of(Red, alpha), nil
 	case "Fuchsia":
-		return Of(Black, alpha)
+		return Of(Fuchsia, alpha), nil
 	case "Yellow":
-		return Of(Black, alpha)
+		return Of(Yellow, alpha), nil
 	case "White":
-		return Of(Black, alpha)
+		return Of(White, alpha), nil
 
 	}
 
-	// ERROR
-	return color.RGBA{255, 255, 255, alpha}
+	return Of(White, alpha), fmt.Errorf("%v is not implemented", c)
 }

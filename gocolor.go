@@ -5,6 +5,7 @@ import (
 	"image/color"
 )
 
+// Color is enumration for color name expression
 type Color int
 
 const (
@@ -26,6 +27,7 @@ const (
 	White
 )
 
+// Get color.RGBA from color and alpha
 func Of(c Color, alpha uint8) color.RGBA {
 	switch c {
 	case Black:
@@ -66,6 +68,7 @@ func Of(c Color, alpha uint8) color.RGBA {
 	return color.RGBA{255, 255, 255, alpha}
 }
 
+// Get color.RGBA from color name and alpha. If any color unmatched with parameter, return error.
 func ValueOf(c string, alpha uint8) (color.RGBA, error) {
 
 	switch c {
